@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Alpha4-KIET Signup</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+
+    <form class="form">
+       <p class="form-title">Create an Account</p>
+       <div class="input-container">
+        <input type="text" id="username" placeholder="Username" required>
+       </div>
+        <div class="input-container">
+          <input type="email" id="loginEmail" placeholder="Email" pattern="[a-zA-Z]+\.[0-9]+@kiet\.edu" required>
+          <span>
+          </span>
+      </div>
+      <div class="input-container">
+          <input type="password" id="loginPassword" placeholder="Password" required>
+        </div>
+         <button type="login" class="login" onclick="signup()">
+        Sign up
+      </button>
+
+      <p class="signup-link">
+        Already have an account
+        <a href="login.html">Login</a>
+      </p>
+   </form>
+
+
+  <script src="js/auth.js"></script>
+</body>
+</html>
+
+
+
+
