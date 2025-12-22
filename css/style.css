@@ -6,6 +6,14 @@ html, body {
   align-items: center;
   background-color: #212121;
 }
+
+.error-message {
+  color: red;
+  font-size: 0.9em;
+  display: block;
+  text-align: center;
+  margin: auto;
+}
 .form {
   background-color: #fff;
   display: block;
