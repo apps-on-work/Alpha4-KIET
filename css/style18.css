@@ -28,6 +28,8 @@ body {
 /* Top bar */
 .navbar {
   display: flex;
+  position: fixed;
+  width: 100%;
   align-items: center;
   justify-content: space-between;
   padding: 12px 24px;
