@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Alpha4-KIET Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -17,7 +18,7 @@
       <div class="input-container">
           <input type="password" id="loginPassword" placeholder="Password" required>
         </div>
-         <button type="login" class="login" onclick="login()">
+         <button type="button" class="login" onclick="login(event)">
         Login
       </button>
 
@@ -25,12 +26,13 @@
         Don't have an account?
         <a href="signup.html">Sign up</a>
       </p>
+      <div class="input-container">
+        <span id="error" class="error-message"></span>
+      </div>
    </form>
 
 
   <script src="js/auth.js"></script>
 </body>
 </html>
-
-
 
