@@ -1,5 +1,5 @@
-if (window.location.pathname.endsWith("index.html") && localStorage.getItem("loggedIn") !== "true") {
-  window.location.href = "login.html";
+if (window.location.pathname.endsWith("home.html") && localStorage.getItem("loggedIn") !== "true") {
+  window.location.href = "index.html";
 }
 
 const user = JSON.parse(localStorage.getItem("user"));
