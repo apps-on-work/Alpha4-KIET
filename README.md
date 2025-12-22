@@ -13,4 +13,4 @@ It is a website that gives you collective info of your campus, what's happening 
 
 
 
-© [Blassels](https://www.linkedin.com/company/blassels)
+# © [Blassels](https://www.linkedin.com/company/blassels)
