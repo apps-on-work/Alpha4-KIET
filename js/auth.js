@@ -13,7 +13,7 @@ function signup() {
   localStorage.setItem("user", JSON.stringify(user));
   localStorage.setItem("loggedIn", "true");
 
-  window.location.href = "index.html";
+  window.location.href = "home.html";
 }
 
 function login(event) {
@@ -30,7 +30,7 @@ function login(event) {
 
   if (user.email === email && user.password === password) {
     localStorage.setItem("loggedIn", "true");
-    window.location.href = "index.html";
+    window.location.href = "home.html";
   } else {
     document.getElementById("error").innerText = "Invalid login credentials";
   }
@@ -39,5 +39,5 @@ function login(event) {
 
 function logout() {
   localStorage.setItem("loggedIn", "false");
-  window.location.href = "login.html";
+  window.location.href = "index.html";
 }
