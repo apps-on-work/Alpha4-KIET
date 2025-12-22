@@ -9,6 +9,21 @@ body {
   color: rgb(255, 255, 255);
 }
 
+.button {
+  text-decoration: none;
+  padding: 8px 16px;
+  background-color: #605ae0;
+  color: #ffffff;
+  border-radius: 6px;
+  font-weight: 500;
+  margin-left: 10px;
+  transition: background-color 0.2s ease;
+}
+
+.button:hover {
+  background-color: #4f46e5;
+}
+
 /* Top bar */
 .navbar {
   display: flex;
@@ -39,7 +54,7 @@ nav a {
 }
 
 nav a:hover {
-  color: #10a37f;
+  color: #ffffff;
 }
 
 /* Page content */
