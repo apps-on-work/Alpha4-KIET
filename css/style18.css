@@ -12,7 +12,7 @@ body {
 .button {
   text-decoration: none;
   padding: 8px 16px;
-  background-color: #605ae0;
+  background-color: rgb(238, 130, 238);
   color: #ffffff;
   border-radius: 6px;
   font-weight: 500;
@@ -21,7 +21,8 @@ body {
 }
 
 .button:hover {
-  background-color: #4f46e5;
+  background-color: #ffffff;
+  color: rgb(238, 130, 238);
 }
 
 /* Top bar */
@@ -82,3 +83,79 @@ nav a:hover {
   background-size: var(--gap) var(--gap);
 }
 
+/* oopername is display name */
+#oopername {
+    color: violet;
+}
+/* open to change */
+
+/* heading 1 */
+/*------------------------------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------------------*/
+/* HERO LAYOUT */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 80px;
+  min-height: calc(100vh - 60px); /* minus navbar height */
+}
+
+/* LEFT TEXT */
+.hero-text {
+    max-width: 50%;
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+  line-height: 1.2;
+}
+
+.hero-text p {
+  margin-top: 16px;
+  color: #bdbdbd;
+}
+
+/* RIGHT IMAGES */
+.hero-images {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.hero-images img {
+  height: 60px;
+}
+
+.hero-x {
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+}
+
+/*------------------------------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------------------*/
+
+
+.site-footer {
+  background-color: #000000;
+  color: #ffffff;
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid #ffffff;
+}
+
+.site-footer p {
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+
+.footer-logo {
+  height: 30px;
+}
