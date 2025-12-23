@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Syllabus</title>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: "Google Sans", "sans-serif";
+      padding: 30px;
+    }
+    select {
+      background: #3f3f3f;
+      color: #fff;
+      padding: 8px;
+      border-radius: 6px;
+      border: 2px solid #ffffff;
+    }
+    .pdf-list a {
+      color: #fff;
+      text-decoration: none;
+      display: inline-block;
+      margin: 25px 10px;
+      padding: 5px 10px; 
+      border-radius: 5px;
+      background: violet;
+    }
+
+    .pdf-list a:hover {
+      background: #ffffff;
+      color: violet;
+    }
+
+    h2 {
+        margin-bottom: 10px;
+    }
+    label {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+
+  </style>
+
+</head>
+
+<body>
+
+<h2>Download Syllabus</h2>
+
+<label for="course">Select Course:</label>
+<select id="course">
+  <option value="">--Select Course--</option>
+  <option value="cfe">CFE</option>
+  <option value="spd">SPD</option>
+  <option value="dstl">DSTL</option>
+  <option value="pps">PPS</option>
+  <option value="iot">IOT</option>
+</select>
+
+<label for="year">Select Year:</label>
+<select id="year">
+  <option value="">--Select Year--</option>
+  <option value="FF">First Year Sem 1</option>
+  <option value="FS">First Year Sem 2</option>
+</select>
+
+<div class="pdf-list" id="pdfList">
+  <!--for links would be adding it later :) -->
+</div>
+
+<script>
+  const syllabusData = {
+    cfe: {
+      FF: ["CFE_First_Year_sem-1_Syllabus.pdf"],
+      FS: ["CFE_First_Year_sem-2_Syllabus.pdf"]
+    },
+    spd: {
+      FF: ["SPD_First_Year_sem-1_Syllabus.pdf"],
+      FS: ["SPD_Second_Year_sem-2_Syllabus.pdf"]
+    },
+    dstl: {
+      FF: ["DSTL_First_Year_sem-1_Syllabus.pdf"],
+      FS: ["DSTL_Second_Year_sem-2_Syllabus.pdf"]
+    },
+    pps: {
+      FF: ["PPS_First_Year_sem-1_Syllabus.pdf"],
+      FS: ["PPS_Second_Year_sem-2_Syllabus.pdf"]
+    },
+    iot: {
+      FF: ["IOT_First_Year_sem-1_Syllabus.pdf"],
+      FS: ["IOT_Second_Year_sem-2_Syllabus.pdf"]
+    }
+  };
+
+  const courseSelect = document.getElementById("course");
+  const yearSelect = document.getElementById("year");
+  const pdfList = document.getElementById("pdfList");
+
+  function updateSyllabus() {
+    const course = courseSelect.value;
+    const year = yearSelect.value;
+    pdfList.innerHTML = "";
+
+    if (course && year && syllabusData[course] && syllabusData[course][year]) {
+      syllabusData[course][year].forEach(pdf => {
+        const link = document.createElement("a");
+        link.href = "syllabus/" + pdf;
+        link.download = pdf;
+        link.textContent = pdf;
+        pdfList.appendChild(link);
+      });
+    }
+  }
+
+  courseSelect.addEventListener("change", updateSyllabus);
+  yearSelect.addEventListener("change", updateSyllabus);
+</script>
+
+
+</body>
+</html>
+
