@@ -7,31 +7,35 @@
 </head>
 <body>
 
+  <form class="form" onsubmit="login(event)">
+  <p class="form-title">Login to your account</p>
 
-    <form class="form" onsubmit="login(event)">
-       <p class="form-title">Login to your account</p>
-        <div class="input-container">
-          <input type="email" id="loginEmail" placeholder="Email" pattern="[a-zA-Z]+\.[0-9]+@kiet\.edu" required>
-          <span>
-          </span>
-      </div>
-      <div class="input-container">
-          <input type="password" id="loginPassword" placeholder="Password" required>
-        </div>
-         <button type="button submit" class="login" onclick="login(event)">
-        Login
-      </button>
+  <div class="input-container">
+    <input
+      type="text"
+      id="loginEmail"
+      placeholder="Email"
+      pattern="^[a-zA-Z]+\.[0-9]+@kiet\.edu$"
+      required>
+  </div>
 
-      <p class="signup-link">
-        Don't have an account?
-        <a href="signup.html">Sign up</a>
-      </p>
-      <div class="input-container">
-        <span id="error" class="error-message"></span>
-      </div>
-   </form>
+  <div class="input-container">
+    <input type="password" id="loginPassword" placeholder="Password" required>
+  </div>
 
+  <button type="submit" class="login">
+    Login
+  </button>
+    <p class="signup-link">
+      Don't have an account?
+      <a href="signup.html">Sign up</a>
+    </p>
+  <div class="input-container">
+    <span id="error" class="error-message"></span>
+  </div>
+</form>
 
   <script src="js/auth.js"></script>
 </body>
 </html>
+
