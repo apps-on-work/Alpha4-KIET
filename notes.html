@@ -18,18 +18,16 @@
       border: 2px solid #ffffff;
     }
     .pdf-list a {
-      color: #fff;
+      color: #acacac;
       text-decoration: none;
       display: inline-block;
       margin: 25px 10px;
       padding: 5px 10px; 
       border-radius: 5px;
-      background: violet;
     }
 
     .pdf-list a:hover {
-      background: #ffffff;
-      color: violet;
+      color: #fff;
     }
 
     h2 {
@@ -47,60 +45,105 @@
 
 <h2>Download Notes</h2>
 
+<label for="year">Select Year:</label>
+<select id="year">
+    <option value="">--Select Year--</option>
+    <option value="FI">First Year</option>
+    <option value="SE">Second Year</option>
+    <option value="TH">Third Year</option>
+    <option value="FH">Fourth Year</option>
+</select>
 <label for="subject">Select Subject:</label>
 <select id="subject">
   <option value="">--Select Subject--</option>
-  <option value="math">CFE</option>
-  <option value="physics">SPD</option>
-</select>
-<label for="year">Select Year:</label>
-<select id="year">
-  <option value="">--Select Year--</option>
-  <option value="FF">First Year Sem 1</option>
-  <option value="FS">First Year Sem 2</option>
 </select>
 
 <div class="pdf-list" id="pdfList">
-  <!-- PDF links will appear here -->
+  <!-- PDF links will appear here no touching-->
 </div>
 
 <script>
   const notesData = {
-    math: {
-      FF: ["Alc Unit 1.pdf", "Alc Unit 2.pdf"],
-      FS: ["Calc Unit 1.pdf"]
+    FI: {
+      calc: ["CFE Unit 1.pdf", "CFE Unit 2.pdf", "CFE Unit 3.pdf", "CFE Unit 4.pdf", "CFE Unit 5.pdf"],
+      phy: ["SPD Unit 1.pdf", "SPD Unit 2.pdf", "SPD Unit 3.pdf", "SPD Unit 4.pdf", "SPD Unit 5.pdf"],
+      dstl: ["DSTL Unit 1.pdf", "DSTL Unit 2.pdf", "DSTL Unit 3.pdf", "DSTL Unit 4.pdf", "DSTL Unit 5 Part 1.pdf",
+        "DSTL Unit 5 Part 2.pdf"
+      ],
+      pps: ["PPS C Unit 1.pdf", "PPS  C Unit 2.pdf", "PPS C Unit 3.pdf", "PPS C Unit 4.pdf", "PPS C Unit 5.pdf",
+        "PPS Python Unit 1.pdf", "PPS Python Unit 2.pdf", "PPS Python Unit 3.pdf", "PPS Python Unit 4.pdf", "PPS Python Unit 5.pdf"
+      ],
+      iot: ["IoT Sensors.pdf", "IoT Arduino Uno.pdf", "IoT ESP8266.pdf"], 
+      cold: ["COLD Super.pdf"]
     },
-    physics: {
-      FF: ["Semiconductor Unit 5.pdf"],
-      FS: ["Semiinsulator Unit 1.pdf", "Semiinsulator Unit 2.pdf"]
+    SE: {
+      phy: ["SPD Unit 5.pdf", "Semiinsulator Unit 2.pdf"]
+    },
+    TH: {
+      // no subjects yet
+    },
+    FH: {
+      // no subjects yet
     }
   };
 
-  const subjectSelect = document.getElementById("subject");
+  const subjectNames = {
+    calc: "CFE",
+    phy: "SPD",
+    dstl: "DSTL",
+    pps: "PPS", 
+    iot: "IoT", 
+    cold: "COLD",
+    chem: "EC",
+    dnr: "DnR",
+    eee: "EEE"
+  };
+
   const yearSelect = document.getElementById("year");
+  const subjectSelect = document.getElementById("subject");
   const pdfList = document.getElementById("pdfList");
 
-  function updatePDFs() {
-    const subject = subjectSelect.value;
+  subjectSelect.disabled = true;
+
+  yearSelect.addEventListener("change", () => {
     const year = yearSelect.value;
+
     pdfList.innerHTML = "";
-    if(subject && year && notesData[subject] && notesData[subject][year]) {
-      notesData[subject][year].forEach(pdf => {
+    subjectSelect.innerHTML = `<option value="">--Select Subject--</option>`;
+
+    if (!year || !notesData[year] || Object.keys(notesData[year]).length === 0) {
+      subjectSelect.disabled = true;
+      return;
+    }
+
+    Object.keys(notesData[year]).forEach(subjectKey => {
+      const option = document.createElement("option");
+      option.value = subjectKey;
+      option.textContent = subjectNames[subjectKey] || subjectKey;
+      subjectSelect.appendChild(option);
+    });
+
+    subjectSelect.disabled = false;
+  });
+
+  subjectSelect.addEventListener("change", () => {
+    const year = yearSelect.value;
+    const subject = subjectSelect.value;
+
+    pdfList.innerHTML = "";
+
+    if (year && subject && notesData[year][subject]) {
+      notesData[year][subject].forEach(pdf => {
         const link = document.createElement("a");
-        link.href = "notes/" + pdf;
+        link.href = `notes/${year}/${pdf}`;
         link.target = "_blank";
         link.textContent = pdf;
         pdfList.appendChild(link);
       });
     }
-  }
-
-  subjectSelect.addEventListener("change", updatePDFs);
-  yearSelect.addEventListener("change", updatePDFs);
+  });
 </script>
+
 
 </body>
 </html>
-
-
-<!-- FILE IS IN VERY BAD STATE, will correct soon dont add or commit to this pls -->
