@@ -7,30 +7,35 @@
 </head>
 <body>
 
+  <form class="form" onsubmit="signup(event)">
+  <p class="form-title">Create an Account</p>
 
-    <form class="form" onsubmit="signup()">
-       <p class="form-title">Create an Account</p>
-       <div class="input-container">
-        <input type="text" id="username" placeholder="Username" required>
-       </div>
-        <div class="input-container">
-          <input type="email" id="signupEmail" placeholder="Email" pattern="[a-zA-Z]+\.[0-9]+@kiet\.edu" required>
-          <span>
-          </span>
-      </div>
-      <div class="input-container">
-          <input type="password" id="signupPassword" placeholder="Password" required>
-        </div>
-         <button type="button submit" class="login" onclick="signup()">
-        Sign up
-      </button>
+  <div class="input-container">
+    <input type="text" id="username" placeholder="Username" required>
+  </div>
 
-      <p class="signup-link">
-        Already have an account
-        <a href="index.html">Login</a>
-      </p>
-   </form>
+  <div class="input-container">
+    <input
+      type="text"
+      id="signupEmail"
+      placeholder="Email"
+      pattern="^[a-zA-Z]+\.[0-9]+@kiet\.edu$"
+      required>
+  </div>
 
+  <div class="input-container">
+    <input type="password" id="signupPassword" placeholder="Password" required>
+  </div>
+
+  <button type="submit" class="login">
+    Sign up
+  </button>
+
+  <p class="signup-link">
+    Already have an account
+    <a href="index.html">Login</a>
+  </p>
+</form>
 
   <script src="js/auth.js"></script>
 </body>
