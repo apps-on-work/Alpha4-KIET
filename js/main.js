@@ -20,6 +20,10 @@ function loadNotes() {
   document.getElementById("contentFrame").src = "notes.html";
 }
 
+function loadSyllabus() {
+  document.getElementById("contentFrame").src = "syllabus.html";
+}
+
 window.addEventListener("load", () => {
   const iframe = document.getElementById("contentFrame");
 });
@@ -27,3 +31,4 @@ window.addEventListener("load", () => {
 function callGossip() {
   //calls various misc.
 }
+
