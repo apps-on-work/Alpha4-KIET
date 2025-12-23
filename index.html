@@ -8,7 +8,7 @@
 <body>
 
 
-    <form class="form">
+    <form class="form" onsubmit="login(event)">
        <p class="form-title">Login to your account</p>
         <div class="input-container">
           <input type="email" id="loginEmail" placeholder="Email" pattern="[a-zA-Z]+\.[0-9]+@kiet\.edu" required>
@@ -18,7 +18,7 @@
       <div class="input-container">
           <input type="password" id="loginPassword" placeholder="Password" required>
         </div>
-         <button type="button" class="login" onclick="login(event)">
+         <button type="button submit" class="login" onclick="login(event)">
         Login
       </button>
 
@@ -35,6 +35,3 @@
   <script src="js/auth.js"></script>
 </body>
 </html>
-
-
-
