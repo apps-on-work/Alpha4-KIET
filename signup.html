@@ -8,7 +8,7 @@
 <body>
 
 
-    <form class="form">
+    <form class="form" onsubmit="signup()">
        <p class="form-title">Create an Account</p>
        <div class="input-container">
         <input type="text" id="username" placeholder="Username" required>
@@ -21,7 +21,7 @@
       <div class="input-container">
           <input type="password" id="signupPassword" placeholder="Password" required>
         </div>
-         <button type="button" class="login" onclick="signup()">
+         <button type="button submit" class="login" onclick="signup()">
         Sign up
       </button>
 
@@ -35,7 +35,3 @@
   <script src="js/auth.js"></script>
 </body>
 </html>
-
-
-
-
