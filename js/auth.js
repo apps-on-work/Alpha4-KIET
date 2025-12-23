@@ -1,12 +1,15 @@
-function signup() {
+function signup(event) {
+  event.preventDefault();
+
+  const form = event.target;
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+
   const username = document.getElementById("username").value;
   const email = document.getElementById("signupEmail").value;
   const password = document.getElementById("signupPassword").value;
-
-  if (!username || !email || !password) {
-    alert("Fill all fields");
-    return;
-  }
 
   const user = { username, email, password };
 
@@ -16,15 +19,24 @@ function signup() {
   window.location.href = "home.html";
 }
 
+
 function login(event) {
   event.preventDefault();
+
+  const form = event.target;
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+
   const email = document.getElementById("loginEmail").value;
   const password = document.getElementById("loginPassword").value;
 
   const user = JSON.parse(localStorage.getItem("user"));
 
   if (!user) {
-    document.getElementById("error").innerText = "No user found. Please sign up first.";
+    document.getElementById("error").innerText =
+      "No user found. Please sign up first.";
     return;
   }
 
@@ -32,7 +44,8 @@ function login(event) {
     localStorage.setItem("loggedIn", "true");
     window.location.href = "home.html";
   } else {
-    document.getElementById("error").innerText = "Invalid login credentials";
+    document.getElementById("error").innerText =
+      "Invalid login credentials";
   }
 }
 
