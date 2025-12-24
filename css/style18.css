@@ -293,4 +293,86 @@ nav a:hover {
 /*------------------------------------------------------------------------------------------------------------*/
 /*------------------------------------------------------------------------------------------------------------*/
 /*------------------------------------------------------------------------------------------------------------*/
+/* Event Page  */
+.events-hero {
+    padding: 120px 20px 40px;
+    text-align: center;
+}
+
+.filter-bar {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: transparent;
+    color: white;
+    border: 1px solid #bdbdbd;
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: "Google Sans", sans-serif;
+    transition: 0.3s;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background: violet;
+    border-color: violet;
+}
+
+.events-grid {
+    padding: 40px 10%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+}
+
+.event-card {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid #444;
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    transition: 0.3s;
+}
+
+.event-card:hover {
+    border-color: violet;
+    transform: translateY(-5px);
+}
+
+.card-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Secondary button for Navigation */
+.btn-nav {
+    background: transparent;
+    border: 1px solid violet;
+    color: violet;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    flex: 1;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.btn-nav:hover {
+    background: violet;
+    color: white;
+}
+
+.btn-reg {
+    flex: 1;
+    text-align: center;
+    margin-left: 0 !important; /* Override standard button margin */
+}
 
