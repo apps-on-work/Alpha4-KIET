@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Campus Map</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style18.css">
+
+  <style>
+    body {
+      font-family: 'Google Sans', sans-serif;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .top-sidebar {
+      background: #f4f4f4;
+      padding: 20px;
+      border-radius: 12px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .top-sidebar h3 {
+      margin: 0;
+      margin-right: 20px;
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      min-width: 200px;
+    }
+
+    .field-group label {
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    .field-group input,
+    .field-group select {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .map-container {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    iframe {
+      width: 100%;
+      height: 650px;
+      border: none;
+    }
+
+    .button {
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="logo">
+    <a href="home.html"><img src="assets/logo.png" alt="Logo"></a>
+    <span><b>Alpha4 by Blassels</b></span>
+  </div>
+
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="clubs.html">Clubs</a>
+    <a href="events.html">Events</a>
+    <a href="guide.html">101</a>
+    <a href="maps.html" class="active">Map</a>
+    <a href="index.html" class="button" onclick="logout()">Log out</a>
+  </nav>
+</header>
+
+<div class="container">
+
+  <div class="top-sidebar">
+    <h3>Directions</h3>
+
+    <div class="field-group">
+      <label for="from">From</label>
+      <select id="from">
+        <option value="">Select location</option>
+      </select>
+    </div>
+
+    <div class="field-group">
+      <label for="to">To</label>
+      <select id="to">
+        <option value="">Select location</option>
+      </select>
+    </div>
+
+    <button class="button" onclick="loadRoute()">Show Route</button>
+  </div>
+
+  <div class="map-container">
+    <iframe id="mapFrame" src="map_api.html"></iframe>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <p>© 2025-2029. All rights reserved.</p>
+  <img src="assets/logo.png" alt="Logo" class="footer-logo">
+  <p><b>by</b></p>
+  <img src="assets/blaa.jpeg" alt="Blaa" class="footer-logo">
+</footer>
+
+<script src="js/main.js"></script>
+
+<script>
+  function loadRoute() {
+    const from = document.getElementById("from").value;
+    const to = document.getElementById("to").value;
+
+    if (!from || !to) {
+      alert("Please select both From and To locations.");
+      return;
+    }
+
+    // Pass values to iframe via URL params
+    document.getElementById("mapFrame").src =
+      `map_api.html?from=${from}&to=${to}`;
+  }
+</script>
+
+</body>
+</html>
