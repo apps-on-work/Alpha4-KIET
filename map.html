@@ -11,6 +11,8 @@
     body {
       font-family: 'Google Sans', sans-serif;
       margin: 0;
+      background-color: #000;
+      color: #fff;
     }
 
     .container {
@@ -19,12 +21,14 @@
       padding: 20px;
     }
 
+    /* Top controls */
     .top-sidebar {
+      background-color: #111;
       padding: 20px;
       border-radius: 12px;
       display: flex;
       gap: 20px;
-      align-items: center;
+      align-items: flex-end;
       margin-bottom: 20px;
       flex-wrap: wrap;
     }
@@ -42,33 +46,35 @@
 
     .field-group label {
       font-size: 14px;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
+      color: #ccc;
     }
 
-    .field-group input,
     .field-group select {
       padding: 10px;
       border-radius: 8px;
-      border: 1px solid #ccc;
+      border: none;
+      background-color: #000;
+      color: #fff;
+      outline: none;
     }
 
-    .main-content {
+    /* Map container */
+    .map-container {
+      background-color: #000;
       border-radius: 12px;
       overflow: hidden;
+      border: 1px solid #222;
     }
 
     iframe {
       width: 100%;
       height: 650px;
-    }
-
-    .button {
-      padding: 10px 20px;
-      border-radius: 8px;
-      cursor: pointer;
+      border: none;
+      background-color: #000;
+      display: block;
     }
   </style>
-  
 </head>
 
 <body>
@@ -84,13 +90,14 @@
     <a href="clubs.html">Clubs</a>
     <a href="events.html">Events</a>
     <a href="guide.html">101</a>
-    <a href="maps.html" class="active">Map</a>
-    <a href="index.html" class="button" onclick="logout()">Log out</a>
+    <a href="map.html" class="active">Map</a>
+    <a href="index.html" class="button">Log out</a>
   </nav>
 </header>
 
 <div class="container">
 
+  <!-- Directions bar -->
   <div class="top-sidebar">
     <h3>DIRECTIONS</h3>
 
@@ -108,11 +115,16 @@
       </select>
     </div>
 
-    <button class="button" onclick="loadRoute()">Show Route</button>
+    <button class="button" type="button" onclick="loadRoute()">Show Route</button>
   </div>
 
-  <div class="main-content">
-    <iframe id="mapFrame" src="map_api.html"></iframe>
+  <!-- Map -->
+  <div class="map-container">
+    <iframe
+      id="mapFrame"
+      src="map_api.html"
+      title="Campus map">
+    </iframe>
   </div>
 
 </div>
@@ -124,7 +136,7 @@
   <img src="assets/blaa.jpeg" alt="Blaa" class="footer-logo">
 </footer>
 
-<script src="js/main.js"></script>
+<script src="js/auth.js"></script>
 
 <script>
   function loadRoute() {
@@ -135,17 +147,11 @@
       alert("Please select both From and To locations.");
       return;
     }
-    
+
     document.getElementById("mapFrame").src =
-      `map_api.html?from=${from}&to=${to}`;
+      `map_api.html?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}`;
   }
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
