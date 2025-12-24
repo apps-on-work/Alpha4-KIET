@@ -24,7 +24,7 @@ const eventsData = [
         title: "AI Open Session",
         type: "open-session",
         desc: "Discussion on Gemini in the Conference Room.",
-        date: "Oct 26, 2026",
+        date: "Jan 26, 2026",
         location: "Conference-Room"
     }
 ];
@@ -69,4 +69,5 @@ function filterEvents(category) {
 }
 
 window.addEventListener("DOMContentLoaded", () => displayEvents());
+
 
