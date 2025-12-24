@@ -1,30 +1,30 @@
 const eventsData = [
     {
-        title: "Innohacks 4.0",
+        title: "Innotech",
         type: "hackathon",
         desc: "24-hour national level hackathon at the Auditorium.",
-        date: "Oct 15, 2025",
+        date: "Jan 15, 2026",
         location: "Auditorium"
     },
     {
         title: "WebDev Bootcamp",
         type: "bootcamp",
         desc: "Master Next.js and Firebase in Lab 4.",
-        date: "Oct 20, 2025",
+        date: "Jan 20, 2026",
         location: "Lab-4"
     },
     {
-        title: "DSC Recruitment",
+        title: "GDG Recruitment",
         type: "recruitment",
-        desc: "Core team selections in the Seminar Hall.",
-        date: "Oct 22, 2025",
-        location: "Seminar-Hall"
+        desc: "First year students recruitment.",
+        date: "Jan 22, 2026",
+        location: "E-302"
     },
     {
         title: "AI Open Session",
         type: "open-session",
         desc: "Discussion on Gemini in the Conference Room.",
-        date: "Oct 25, 2025",
+        date: "Oct 26, 2026",
         location: "Conference-Room"
     }
 ];
@@ -69,3 +69,4 @@ function filterEvents(category) {
 }
 
 window.addEventListener("DOMContentLoaded", () => displayEvents());
+
