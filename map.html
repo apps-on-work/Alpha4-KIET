@@ -21,7 +21,6 @@
       padding: 20px;
     }
 
-    /* Top controls */
     .top-sidebar {
       background-color: #111;
       padding: 20px;
@@ -51,13 +50,6 @@
     }
 
     .field-group select {
-      /*padding: 10px;
-      border-radius: 8px;
-      border: none;
-      background-color: #000;
-      color: #fff;
-      outline: none;*/
-
       background: #3f3f3f;
       color: #fff;
       padding: 8px;
@@ -65,7 +57,6 @@
       border: 2px solid #ffffff;
     }
 
-    /* Map container */
     .map-container {
       background-color: #000;
       border-radius: 12px;
@@ -103,7 +94,6 @@
 
 <div class="container">
 
-  <!-- Directions bar -->
   <div class="top-sidebar">
     <h3>DIRECTIONS</h3>
 
@@ -124,7 +114,6 @@
     <button class="button" type="button" onclick="loadRoute()">Show Route</button>
   </div>
 
-  <!-- Map -->
   <div class="map-container">
     <iframe
       id="mapFrame"
@@ -155,7 +144,7 @@
     }
 
     //file name for google maps api is map_api.html
-      
+    
     document.getElementById("mapFrame").src =
       `map_api.html?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}`;
   }
@@ -163,5 +152,6 @@
 
 </body>
 </html>
+
 
 
