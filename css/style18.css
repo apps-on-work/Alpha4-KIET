@@ -63,7 +63,7 @@ nav a:hover {
 /* Page content */
 .container {
   width: 100%;
-  height: 100%;
+  min-height:100vh;
 
   background: #000000;
   --gap: 5em;
@@ -83,6 +83,9 @@ nav a:hover {
       var(--color) var(--gap)
     );
   background-size: var(--gap) var(--gap);
+  background-attachment: fixed; 
+  display: flex;
+  flex-direction: column;
 }
 
 /* oopername is display name */
@@ -328,6 +331,7 @@ nav a:hover {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 25px;
+    flex-grow: 1;
 }
 
 .event-card {
@@ -381,6 +385,7 @@ nav a:hover {
   /*------------------------------------------------------------------------------------------------------------*/
   /*------------------------------------------------------------------------------------------------------------*/
   
+
 
 
 
