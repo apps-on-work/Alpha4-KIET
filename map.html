@@ -104,7 +104,7 @@
     <div class="field-group">
       <label for="from">From</label>
       <select id="from">
-        <option value="">Select location</option>
+        <option value="">Select location</option>        <!-- hadn't added location options, option adding ig is better after integrating map_api.html -->
       </select>
     </div>
 
@@ -148,6 +148,8 @@
       return;
     }
 
+    //file name for google maps api is map_api.html
+      
     document.getElementById("mapFrame").src =
       `map_api.html?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}`;
   }
@@ -155,3 +157,4 @@
 
 </body>
 </html>
+
