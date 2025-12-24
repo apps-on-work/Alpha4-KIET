@@ -134,8 +134,7 @@
       alert("Please select both From and To locations.");
       return;
     }
-
-    // Pass values to iframe via URL params
+    
     document.getElementById("mapFrame").src =
       `map_api.html?from=${from}&to=${to}`;
   }
@@ -143,4 +142,5 @@
 
 </body>
 </html>
+
 
