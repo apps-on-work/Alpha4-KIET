@@ -6,6 +6,77 @@
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style18.css">
 
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+
+    <style>
+        body {
+            font-family: "Google Sans", sans-serif;
+        }
+
+        .page-top-bottom {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            padding: 80px;
+        }
+
+        .sidebar {
+            width: 100%;
+            background: #000;
+            padding: 20px;
+            border-radius: 20px;
+            border: 1px solid #ffffff;
+            color: #fff;
+        }
+
+        .direction-form {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .direction-form label {
+            margin-right: 5px;
+        }
+
+        .direction-form select {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #fff;
+            background: #111;
+            color: #fff;
+        }
+
+        .main-content {
+            width: 100%;
+        }
+
+        #map {
+            width: 100%;
+            height: 600px;
+            border: 1px solid #ffffff;
+            border-radius: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .page-top-bottom {
+                padding: 20px;
+            }
+        }
+
+        .leaflet-container {
+            z-index: 1;
+        }
+
+        .sidebar h2 {
+            margin-bottom: 10px;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -76,7 +147,6 @@
     <p><b>by</b></p>
     <img src="assets/blaa.jpeg" alt="Blaa" class="footer-logo">
 </footer>
-
 
 </body>
 </html>
