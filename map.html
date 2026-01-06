@@ -1,157 +1,82 @@
-<!--UNDER PROGRESS !_!-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Campus Map</title>
+    <title>Map</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400..700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style18.css">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style18.css">
 
-  <style>
-    body {
-      font-family: 'Google Sans', sans-serif;
-      margin: 0;
-      background-color: #000;
-      color: #fff;
-    }
-
-    .container {
-      max-width: 1400px;
-      margin: auto;
-      padding: 20px;
-    }
-
-    .top-sidebar {
-      background-color: #111;
-      padding: 20px;
-      border-radius: 12px;
-      display: flex;
-      gap: 20px;
-      align-items: flex-end;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-    }
-
-    .top-sidebar h3 {
-      margin: 0;
-      margin-right: 20px;
-    }
-
-    .field-group {
-      display: flex;
-      flex-direction: column;
-      min-width: 200px;
-    }
-
-    .field-group label {
-      font-size: 14px;
-      margin-bottom: 6px;
-      color: #ccc;
-    }
-
-    .field-group select {
-      background: #3f3f3f;
-      color: #fff;
-      padding: 8px;
-      border-radius: 6px;
-      border: 2px solid #ffffff;
-    }
-
-    .map-container {
-      background-color: #000;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid #222;
-    }
-
-    iframe {
-      width: 100%;
-      height: 650px;
-      border: none;
-      background-color: #000;
-      display: block;
-    }
-  </style>
 </head>
 
 <body>
 
 <header class="navbar">
-  <div class="logo">
-    <a href="home.html"><img src="assets/logo.png" alt="Logo"></a>
-    <span><b>Alpha4 by Blassels</b></span>
-  </div>
+    <div class="logo">
+        <a href="home.html"><img src="assets/logo.png" alt="Logo"></a>
+        <span><b>Alpha4 by Blassels</b></span>
+    </div>
 
-  <nav>
-    <a href="home.html">Home</a>
-    <a href="clubs.html">Clubs</a>
-    <a href="events.html">Events</a>
-    <a href="guide.html">101</a>
-    <a href="map.html" class="active">Map</a>
-    <a href="index.html" class="button">Log out</a>
-  </nav>
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="clubs.html">Clubs</a>
+        <a href="events.html">Events</a>
+        <a href="guide.html">101</a>
+        <a href="map.html">Map</a>
+        <a href="index.html" class="button">Log out</a>
+    </nav>
 </header>
 
 <div class="container">
+    <div class="page-top-bottom">
 
-  <div class="top-sidebar">
-    <h3>DIRECTIONS</h3>
+        <aside class="sidebar">
+            <h2>Directions</h2>
 
-    <div class="field-group">
-      <label for="from">From</label>
-      <select id="from">
-        <option value="">Select location</option>        <!-- hadn't added location options, option adding ig is better after integrating map_api.html -->
-      </select>
+            <div class="direction-form">
+                <div>
+                    <label for="from">From:</label>
+                    <select id="from">
+                        <option value="">--Select--</option>
+                        <option value="A">Main Gate</option>
+                        <option value="B">Library</option>
+                        <option value="C">G-Block</option>
+                        <option value="D">KSOP</option>
+                        <option value="E">Auditorium</option>
+                        <option value="F">Cafeteria</option>
+                        <option value="G">TBI KIET</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="to">To:</label>
+                    <select id="to">
+                        <option value="">--Select--</option>
+                        <option value="A">Main Gate</option>
+                        <option value="B">Library</option>
+                        <option value="C">G-Block</option>
+                        <option value="D">KSOP</option>
+                        <option value="E">Auditorium</option>
+                        <option value="F">Cafeteria</option>
+                        <option value="G">TBI KIET</option>
+                    </select>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div id="map"></div>
+        </main>
+
     </div>
-
-    <div class="field-group">
-      <label for="to">To</label>
-      <select id="to">
-        <option value="">Select location</option>
-      </select>
-    </div>
-
-    <button class="button" type="button" onclick="loadRoute()">Show Route</button>
-  </div>
-
-  <div class="map-container">
-    <iframe
-      id="mapFrame"
-      src="map_api.html"
-      title="Campus map">
-    </iframe>
-  </div>
-
 </div>
 
 <footer class="site-footer">
-  <p>© 2025-2029. All rights reserved.</p>
-  <img src="assets/logo.png" alt="Logo" class="footer-logo">
-  <p><b>by</b></p>
-  <img src="assets/blaa.jpeg" alt="Blaa" class="footer-logo">
+    <p>© 2025-2029. All rights reserved.</p>
+    <img src="assets/logo.png" alt="Logo" class="footer-logo">
+    <p><b>by</b></p>
+    <img src="assets/blaa.jpeg" alt="Blaa" class="footer-logo">
 </footer>
 
-<script src="js/auth.js"></script>
-
-<script>
-  function loadRoute() {
-    const from = document.getElementById("from").value;
-    const to = document.getElementById("to").value;
-
-    if (!from || !to) {
-      alert("Please select both From and To locations.");
-      return;
-    }
-
-    //file name for google maps api is map_api.html
-    
-    document.getElementById("mapFrame").src =
-      `map_api.html?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}`;
-  }
-</script>
 
 </body>
 </html>
-
-
-
