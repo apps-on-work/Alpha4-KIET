@@ -151,6 +151,47 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="js/path.js"></script>
 
+<script>
+
+    const map = L.map('map').setView([28.753015521251825, 77.49848157938608], 17);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    let routeLine;
+
+    function drawRoute() {
+        const from = document.getElementById("from").value;
+        const to = document.getElementById("to").value;
+
+        if (!from || !to) return;
+
+        const key = from + "-" + to;
+
+        if (routeLine) {
+            map.removeLayer(routeLine);
+        }
+
+        if (!routes[key]) {
+            alert("Route not defined yet!");
+            return;
+        }
+
+        routeLine = L.polyline(routes[key], {
+            color: "#ff4d00",
+            weight: 4
+        }).addTo(map);
+
+        map.fitBounds(routeLine.getBounds());
+        
+    }
+
+    document.getElementById("from").addEventListener("change", drawRoute);
+    document.getElementById("to").addEventListener("change", drawRoute);
+
+
+</script>
 
 </body>
 </html>
