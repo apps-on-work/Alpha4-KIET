@@ -1,22 +1,262 @@
+<!-- clubs.html -->
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>home</title>
+    <meta charset="UTF-8">
+    <title>Clubs</title>
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style18.css">
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        font-family: 'Google Sans', sans-serif;
+      }
+      body {
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+      
+      .navbar {
+        top: 0;
+        position: sticky;
+        z-index: 1000;
+      }
+      .indiv {
+        text-align: center;
+        width: 100vw;
+        min-height: 80vh;
+        padding-bottom: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .h1 {
+        font-size: 3vw;
+        margin-top: 40px;
+      }
+      .input{
+        margin-top: 400px;
+      }
+      .predict{
+        border: none;
+        outline: none;
+        text-align: center;
+        width: 40vw;
+        color: #ff04ff;
+        background-color: transparent;
+        font-size: 1.5vw;
+        height: 60px;
+        max-height: 250px;
+        resize: none;
+        box-sizing: border-box;
+        margin-left: -6vw;
+      }
+      .predict.hide-caret {
+        caret-color: transparent;
+      }
+      .but {
+        width: 5.5vw;
+        height: 5.5vw;
+        background-color: #ff04ff;
+        color: white;
+        font-size: 1.5vw;
+        margin-left: -4vw;
+        border: none;
+        cursor: pointer;
+        border-radius: 100px;
+      }
+      .fake-wrap {
+        position: relative;
+        width: 50vw;
+      }
+      .fake-placeholder {
+        position: absolute;
+        top: 18px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #aaa;
+        font-size: 1.5vw;
+        pointer-events: none;
+        white-space: nowrap;
+      }
+      .fake-cursor {
+        color: #ff04ff;
+        animation: blink 1s steps(1) infinite;
+      }
+      @keyframes blink {
+        50% { opacity: 0; }
+      }
+      .result-container {
+        display: flex;
+        margin-top: 40px;
+        width: 100%;
+        /* Use auto height to fit content */
+        height: auto;
+        min-height: 200px;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+      .result-container.show {
+        visibility: visible;
+        opacity: 1;
+      }
+      .c0 {
+        height: 150px;
+        width: 150px;
+        background-color: #000;
+        background-size: cover;
+        background-position: center;
+        border-radius: 12px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      }
+      .all-clubs-section {
+        padding: 50px 10vw;
+        text-align: center;
+  background: #000000;
+  --gap: 5em;
+  --line: 1px;
+  --color: rgba(255, 255, 255, 0.2);
 
+  background-image: linear-gradient(
+      -90deg,
+      transparent calc(var(--gap) - var(--line)),
+      var(--color) calc(var(--gap) - var(--line) + 1px),
+      var(--color) var(--gap)
+    ),
+    linear-gradient(
+      0deg,
+      transparent calc(var(--gap) - var(--line)),
+      var(--color) calc(var(--gap) - var(--line) + 1px),
+      var(--color) var(--gap)
+    );
+  background-size: var(--gap) var(--gap);
+      }
+      /* 
+  background: #000000;
+  --gap: 5em;
+  --line: 1px;
+  --color: rgba(255, 255, 255, 0.2);
+
+  background-image: linear-gradient(
+      -90deg,
+      transparent calc(var(--gap) - var(--line)),
+      var(--color) calc(var(--gap) - var(--line) + 1px),
+      var(--color) var(--gap)
+    ),
+    linear-gradient(
+      0deg,
+      transparent calc(var(--gap) - var(--line)),
+      var(--color) calc(var(--gap) - var(--line) + 1px),
+      var(--color) var(--gap)
+    );
+  background-size: var(--gap) var(--gap);
+}
+ */
+      .club-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+        margin-top: 40px;
+      }
+      .club-item {
+        aspect-ratio: 1/1;
+        /* background-color: #000; */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 15px;
+        /* border: 3px solid #eee; */
+        transition: transform 0.3s ease;
+      }
+      .club-item:hover {
+        transform: translateY(-5px);
+        border: solid 3px rgb(238, 130, 238);
+        /* transition: 0.2s ease-in-out; */
+      }
+      .club-item img {
+        height: 140px;
+        width: auto;
+      }
+      .club-item p {
+        color: black;
+      }
+
+
+      /* 
+       */
+       /* Popup Overlay */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+/* Popup Box */
+.popup-box {
+  width: 40vw;
+  height: 70vh;
+  padding: 30px;
+  border-radius: 18px;
+  position: relative;
+  text-align: center;
+  animation: popupScale 0.3s ease;
+}
+
+/* Title */
+.popup-box h2 {
+  font-size: 2vw;
+  margin-bottom: 15px;
+}
+
+/* Description */
+.popup-box p {
+  font-size: 1.1vw;
+  line-height: 1.5;
+}
+
+/* Close Button */
+.popup-close {
+  position: absolute;
+  top: 15px;
+  right: 18px;
+  color: white;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Animation */
+@keyframes popupScale {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+    </style>
 </head>
-<style>
-</style>
 <body>
-    
   <header class="navbar">
     <div class="logo">
       <a href="home.html"><img src="assets/logo.png" alt="Logo"></a>
-      <span><b>Alpha4</b></span>
+      <span><b>Alpha4 by Blassels</b></span>
     </div>
-
     <nav>
       <a href="home.html">Home</a>
       <a href="clubs.html">Clubs</a>
@@ -27,22 +267,459 @@
     </nav>
   </header>
 
-  <main class="container hero">
-  <!-- LEFT -->
+  <div class="container">
+    <main class="hero">
+      <div class="indiv">
+        <h1 class="h1" id="ai-heading">Confused? Let us choose for you!</h1>
 
-  <!-- RIGHT -->
-  </main>
+        <div class="input" style="display:flex;align-items:flex-start;justify-content:center; margin-top: 20px; ">
+          <div class="fake-wrap">
+            <span class="fake-placeholder">
+              Type something<span class="fake-cursor">|</span>
+            </span>
+            <textarea class="predict hide-caret" onsubmit="main()" id="autoExpand"></textarea>
+          </div>
+          <!-- <a onclick="main()"><button class="but" type="submit" onclick="main()">Predict</button></a> -->
+        </div>
 
+        <!-- Results: raw Gemini output and recommended club images -->
+        <div id="ai-results" class="result-container">
+          <!-- Display Gemini raw output here -->
+          <!-- <p id="gemini-output" style="color: white; background-color: black; padding: 5px; border-radius: 5px;"></p> -->
 
+          <!-- Divs for recommended club images -->
+          <div class="c0" id="club-1"></div>
+          <div class="c0" id="club-2"></div>
+          <div class="c0" id="club-3"></div>
+        </div>
+      </div>
+    </main>
+
+    <!-- ... (rest of the page) ... -->
+  </div>
+
+    <section class="all-clubs-section">
+      <hr style="border: 0; margin-bottom: 50px;">
+      <h2 style="font-size: 5vw; color: #ebebeb; margin-bottom: 120px;">Explore All Clubs</h2>
+      <div class="club-grid">
+
+  <div class="club-item" onclick="openPopup('NCC')">
+    <img src="assets/NCC.webp">
+    <p>NCC</p>
+  </div>
+
+  <div class="club-item" onclick="openPopup('DINOBOTS')">
+    <img src="assets/dinobots.webp">
+    <p>DINOBOTS</p>
+  </div>
+
+  <div class="club-item" onclick="openPopup('CP BYTE')"> 
+    <img src="assets/CP_BYTE.webp">
+    <p>CP BYTE</p>
+  </div>
+
+  <div class="club-item" onclick="openPopup('CREATIVE CELL')">
+    <img src="assets/creative_cell.webp">
+    <p>CREATIVE CELL</p>
+  </div>
+
+  <div class="club-item"  onclick="openPopup('E-CELL')">
+    <img src="assets/e-cell.webp">
+    <p>E-CELL</p>
+  </div>
+
+  <div class="club-item" onclick="openPopup('FOSSCU')">
+    <img src="assets/fosscu.webp">
+    <p>FOSSCU</p>
+  </div>
+
+  <div class="club-item" onclick="openPopup('GOOGLE DEVELOPER GROUPS')">
+    <img src="assets/gdg_kiet.webp">
+    <p>GOOGLE DEVELOPER GROUPS</p>
+  </div>
+
+  <div class="club-item">
+    <img src="assets/impeccables.webp" onclick="openPopup('THE IMPECCABLES')">
+    <p>THE IMPECCABLES</p>
+  </div>
+
+  <div class="club-item" onclick="openPopup('INNOGEEKS')">
+    <img src="assets/innogeeks.webp">
+    <p>INNOGEEKS</p>
+  </div>
+
+  <div class="club-item"  onclick="openPopup('KAVYANJALI')">
+    <img src="assets/kavyanjali.webp">
+    <p>KAVYANJALI</p>
+  </div>
+
+  <div class="club-item" onclick="openPopup('KIET MOVIE SOCIETY')">
+    <img src="assets/kiet_movie_society.webp">
+    <p>KIET MOVIE SOCIETY</p>
+  </div>
+
+  <div class="club-item" onclick="openPopup('KIET MUSIC CLUB')">
+    <img src="assets/Kiet_Music_club.webp">
+    <p>KIET MUSIC CLUB</p>
+  </div>
+
+  <div class="club-item" onclick="openPopup('KINESIS TECHNICAL SOCIETY')">
+    <img src="assets/kts.webp">
+    <p>KINESIS TECHNICAL SOCIETY</p>
+  </div>
+
+  <div class="club-item"  onclick="openPopup('ODYSSEY')">
+    <img src="assets/Odyssey.webp">
+    <p>ODYSSEY</p>
+  </div>
+
+  <div class="club-item" onclick="openPopup('SAEKIET')">
+    <img src="assets/SAEKIET.webp">
+    <p>SAEKIET</p>
+  </div>
+
+  <div class="club-item" onclick="openPopup('STEPPERS DANCE CREW')">
+    <img src="assets/SDC.webp">
+    <p>SOFTWARE DEVELOPMENT CELL</p>
+  </div>
+<!-- 
+  <div class="club-item" onclick="openPopup('TEDxKIET')">
+    <img src="assets/TEDxKIET.webp">
+    <p>TEDx KIET</p>
+  </div> -->
+
+  <div class="club-item" onclick="openPopup('UDDESHHYA')">
+    <img src="assets/Uddeshya.webp">
+    <p>UDDESHYA</p>
+  </div>
+
+  <div class="club-item" onclick="openPopup('VOID SOCIETY')">
+    <img src="assets/void_society.webp">
+    <p>VOID SOCIETY</p>
+  </div>
+
+</div>
+
+    </section>
+  </div>
+  
   <footer class="site-footer">
-  <p>© 2025-2029 <b>Blassels</b></p>
-  <a href="https://www.linkedin.com/company/blassels"><img src="assets/blaa.jpeg" alt="Blaa" class="footer-logo"></a>
+    <p>© 2025-2029. All rights reserved.</p>
+    <img src="assets/logo.png" alt="Logo" class="footer-logo">
+    <p><b>by</b></p>
+    <img src="assets/blaa.jpeg" alt="Blaa" class="footer-logo">
   </footer>
+<script>async function main() {
+  const textarea = document.getElementById("autoExpand");
+  const resultsDiv = document.getElementById("ai-results");
+  const prompt = textarea.value.trim();
 
+  if (!prompt) return;
 
-    <script src="js/main.js"></script>
-    <script src="js/auth.js"></script>
+  resultsDiv.classList.add("show");
 
+  // Reset UI
+  for (let i = 1; i <= 3; i++) {
+    const box = document.getElementById(`club-${i}`);
+    box.style.backgroundImage = "none";
+    box.dataset.club = ""; 
+    box.style.cursor = "default";
+  }
+
+  try {
+    const response = await fetch("http://localhost:3000/api/predict", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ prompt })
+    });
+
+    const data = await response.json();
+    
+    // We only use the first 3 results to match your HTML divs (club-1, club-2, club-3)
+    data.images.slice(0, 3).forEach((img, index) => {
+      const box = document.getElementById(`club-${index + 1}`);
+      box.style.backgroundImage = `url('${img}')`;
+      box.style.backgroundColor = "transparent";
+      
+      // Assign the club name so the existing popup listener can find it
+      box.dataset.club = data.clubs[index];
+      box.style.cursor = "pointer";
+    });
+
+  } catch (err) {
+    console.error("Fetch error:", err);
+  }
+}
+</script>
+
+  <!-- <script>
+    async function main() {
+      const textarea = document.getElementById("autoExpand");
+      const resultsDiv = document.getElementById("ai-results");
+      const prompt = textarea.value.trim();
+
+      if (!prompt) {
+        alert("Please type something");
+        return;
+      }
+
+      // Show result container (make it visible)
+      resultsDiv.classList.add("show");
+
+      // Reset boxes and output
+      for (let i = 1; i <= 5; i++) {
+        const box = document.getElementById(`club-${i}`);
+        box.style.backgroundImage = "none";
+        box.style.backgroundColor = "#000";
+      }
+
+      try {
+        const response = await fetch("http://localhost:3000/api/predict", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ prompt })
+        });
+
+        const data = await response.json();
+        const clubs = data.clubs;
+        const images = data.images;
+
+        // Display raw Gemini output as JSON array
+        if (Array.isArray(clubs)) {
+          document.getElementById("gemini-output").textContent = JSON.stringify(clubs);
+        }
+
+        // Set background images for each recommended club
+        if (Array.isArray(images)) {
+          images.forEach((img, index) => {
+            if (index >= 5) return;
+            const box = document.getElementById(`club-${index + 1}`);
+            box.style.backgroundImage = `url('${img}')`;
+            box.style.backgroundColor = "transparent";
+          });
+        }
+
+      } catch (err) {
+        console.error(err);
+        alert("AI failed");
+      }
+    }
+  </script> -->
+  <script>
+  const textarea = document.getElementById("autoExpand");
+  const fakePlaceholder = document.querySelector(".fake-placeholder");
+
+  function updateState() {
+    const isEmpty = textarea.value.length === 0;
+    fakePlaceholder.style.display = isEmpty ? "block" : "none";
+    textarea.classList.toggle("hide-caret", isEmpty);
+  }
+
+  textarea.addEventListener("input", function () {
+    this.style.height = "auto";
+    this.style.height =
+      this.scrollHeight > 200 ? "200px" : this.scrollHeight + "px";
+    updateState();
+  });
+
+  textarea.addEventListener("focus", updateState);
+  textarea.addEventListener("blur", updateState);
+
+  updateState();
+</script>
+<!-- Club Popup -->
+<div id="club-popup" class="popup-overlay">
+  <div class="popup-box" style="background-color: #fafafa60; backdrop-filter: blur(30px);">
+    <div class="around">
+    <button class="popup-close" onclick="closePopup()">×</button></div>
+    <h2 id="popup-title"></h2>
+    <p id="popup-desc"></p>
+  </div>
+</div>
+  <script>const CLUBS = {
+  NCC: {
+    name: "NCC",
+    desc: "The KIET Music Club stands as a testament to the vibrant and dynamic musical culture within our campus. Our club is home to diverse group of talented individuals including instrumentalists, vocalists, bands, rappers, beatboxers, and producers all united by their passion for music. Our dedication and hard work has not only made a significant impact on our own institution's cultural landscape but has also been recognized at various prestigious universities and events. KIET Music Club has proudly clinched numerous victories in various events, including those held at IITs and NITs, showcasing our exceptional talent and commitment to excellence. The club serves as a nurturing ground for both aspiring artists and seasoned performers, offering them the opportunity to express themselves, enhance their skills, and grow as musicians. Through our collective efforts we continue to create, innovate, and celebrate the universal language of music.",
+    bg: "#1c1c1c",
+    color: "#ffffff"
+  },
+
+  DINOBOTS: {
+    name: "Dinobots",
+    desc: "Robotics & Automation, Electronics & Engineering, Competitive Technical Events, Innovation & Research",
+    bg: "#0a3d62",
+    color: "#ffffff"
+  },
+
+  "CP BYTE": {
+    name: "CP BYTE",
+    desc: "Competitive Programming & Coding, Web & Android Development, Machine Learning, Augmented Reality and Virtual Reality, Gen-AI, UI/UX",
+    bg: "#111827",
+    color: "#38bdf8"
+    
+  },
+
+  "CREATIVE CELL": {
+    name: "Creative Cell",
+    desc: "Creative Arts, Graphic Design, Content Writing",
+    bg: "#fde68a",
+    color: "#78350f"
+  },
+
+  "E-CELL": {
+    name: "E-CELL",
+    desc: "Entrepreneurship, Event Management, Startup Promotion",
+    bg: "#065f46",
+    color: "#ecfdf5"
+  },
+
+  FOSSCU: {
+    name: "FOSSCU",
+    desc: "Open Source, Linux, Git & Github, Blockchain development",
+    bg: "#1e293b",
+    color: "#e2e8f0"
+  },
+
+  "GOOGLE DEVELOPER GROUPS": {
+    name: "Google Developer Groups",
+    desc: "Software Development, Emerging Google Technologies, Hackathons & Coding, Industry Readiness",
+    bg: "#ffffff",
+    color: "#1f2937"
+  },
+
+  INNOGEEKS: {
+    name: "Innogeeks",
+    desc: "Full-Stack Development, Open Source Contribution, National Hackathons, Innovation & Problem Solving",
+    bg: "#0f172a",
+    color: "#38bdf8"
+  },
+
+  "THE IMPECCABLES": {
+    name: "The Impeccables",
+    desc: "Creative Arts, Personality Development, Photography, Content Writing, Open Mic, Video Editing, Stand-up Comedy",
+    bg: "#312e81",
+    color: "#e0e7ff"
+  },
+
+  KAVYANJALI: {
+    name: "Kavyanjali",
+    desc: "Literary Organization, Multilingual, Kavi-Sammelans, Poetry, Hindi and Urdu Traditions",
+    bg: "#fce7f3",
+    color: "#831843"
+  },
+
+  "KINESIS TECHNICAL SOCIETY": {
+    name: "Kinesis Technical Society",
+    desc: "Web Development, Android Development, Machine Learning & AI, UI/UX Design, Competitive Programming",
+    bg: "#020617",
+    color: "#38bdf8"
+  },
+
+  SAEKIET: {
+    name: "SAEKIET",
+    desc: "Mechanical Design, Automation production, Automobiles manufacturing",
+    bg: "#1f2933",
+    color: "#f8fafc"
+  },
+
+  "VOID SOCIETY": {
+    name: "Void Society",
+    desc: "Cybersecurity, Web3 & Blockchain development, Ethical Hacking",
+    bg: "#000000",
+    color: "#22d3ee"
+  },
+
+  "KIET MUSIC CLUB": {
+    name: "KIET Music Club",
+    desc: "The KIET Music Club stands as a testament to the vibrant and dynamic musical culture within our campus. Our club is home to diverse group of talented individuals including instrumentalists, vocalists, bands, rappers, beatboxers, and producers all united by their passion for music. Our dedication and hard work has not only made a significant impact on our own institution's cultural landscape but has also been recognized at various prestigious universities and events. KIET Music Club has proudly clinched numerous victories in various events, including those held at IITs and NITs, showcasing our exceptional talent and commitment to excellence. The club serves as a nurturing ground for both aspiring artists and seasoned performers, offering them the opportunity to express themselves, enhance their skills, and grow as musicians. Through our collective efforts we continue to create, innovate, and celebrate the universal language of music.",
+    bg: "#111827",
+    color: "#f9fafb"
+  },
+
+  // TEDxKIET: {
+  //   name: "TEDxKIET",
+  //   desc: "Ideas Worth Spreading, Visionary Leadership, Storytelling, Immersive Experiences",
+  //   bg: "#dc2626",
+  //   color: "#ffffff"
+  // },
+
+  "PRAGMATIC FASHION SOCIETY": {
+    name: "Pragmatic Fashion Society",
+    desc: "Runway Choreography, Thematic Productions, Garment Design, Professional Styling",
+    bg: "#faf5ff",
+    color: "#581c87"
+  },
+
+  "KIET MOVIE SOCIETY": {
+    name: "KIET Movie Society",
+    desc: "Filmmaking, Direction, Cinematography, Scriptwriting, Post-production, Film Screenings",
+    bg: "#020617",
+    color: "#e5e7eb"
+  },
+
+  UDDESHHYA: {
+    name: "Uddeshhya",
+    desc: "Student-run NGO, Underprivileged Welfare, Social Service, Living for a Reason",
+    bg: "#064e3b",
+    color: "#ecfdf5"
+  },
+
+  ODYSSEY: {
+    name: "Odyssey",
+    desc: "Communication Skills, Critical Thinking, Artistic Expression, LSRW Skills",
+    bg: "#1e1b4b",
+    color: "#e0e7ff"
+  },
+
+  "STEPPERS DANCE CREW": {
+    name: "Steppers Dance Crew",
+    desc: "Contemporary, Hip-hop, Ballroom, Salsa, Rhythmic Expression",
+    bg: "#0f172a",
+    color: "#f472b6"
+  }
+};
+
+</script>
+<script>
+const popup = document.getElementById("club-popup");
+const popupBox = popup.querySelector(".popup-box");
+const titleEl = document.getElementById("popup-title");
+const descEl = document.getElementById("popup-desc");
+
+function openPopup(clubKey) {
+  const club = CLUBS[clubKey];
+  if (!club) return;
+
+  titleEl.textContent = club.name;
+  descEl.textContent = club.desc;
+
+  popupBox.style.background = club.bg + "60";
+  popupBox.style.color = club.color;
+
+  popup.style.display = "flex";
+}
+
+function closePopup() {
+  popup.style.display = "none";
+}
+
+/* Close when clicking outside */
+popup.addEventListener("click", e => {
+  if (e.target === popup) closePopup();
+});
+</script>
+<script>
+document.querySelectorAll(".c0").forEach(box => {
+  box.addEventListener("click", () => {
+    const clubKey = box.dataset.club; // It looks for the data we just added above!
+    if (clubKey) {
+      openPopup(clubKey);
+    }
+  });
+})
+</script>
+<script src="js.js"></script>
 </body>
 </html>
+
 
