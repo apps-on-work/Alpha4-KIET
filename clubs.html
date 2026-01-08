@@ -703,7 +703,6 @@ function closePopup() {
   popup.style.display = "none";
 }
 
-/* Close when clicking outside */
 popup.addEventListener("click", e => {
   if (e.target === popup) closePopup();
 });
@@ -711,7 +710,7 @@ popup.addEventListener("click", e => {
 <script>
 document.querySelectorAll(".c0").forEach(box => {
   box.addEventListener("click", () => {
-    const clubKey = box.dataset.club; // It looks for the data we just added above!
+    const clubKey = box.dataset.club;
     if (clubKey) {
       openPopup(clubKey);
     }
