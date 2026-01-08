@@ -1,3 +1,5 @@
+# server.py
+
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 import google.generativeai as genai
@@ -45,12 +47,12 @@ def predict():
             return jsonify({ "images": [], "clubs": [] })
 
         model = genai.GenerativeModel(
-            model_name="gemini-2.5-flash-lite",
+            model_name="gemini-1.5-flash", # Changed to a standard stable version
             generation_config={
                 "temperature": 0.2,
                 "max_output_tokens": 300
             }
-        )
+)
 
         internal_prompt = f"""
 You are a recommendation engine for college clubs.
