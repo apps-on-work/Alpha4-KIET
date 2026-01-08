@@ -1,5 +1,3 @@
-# server.py
-
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 import google.generativeai as genai
@@ -93,8 +91,6 @@ RULES:
 """
         response = model.generate_content(internal_prompt)
         
-        # --- FIXED LOGIC START ---
-        # Use Regex to find the list [...] even if there is extra text or markdown
         match = re.search(r'\[.*?\]', response.text, re.DOTALL)
         
         if not match:
@@ -103,12 +99,9 @@ RULES:
 
         json_str = match.group(0)
         clubs_raw = json.loads(json_str)
-        # --- FIXED LOGIC END ---
 
-        # Normalize names to ensure they match dictionary keys
         clubs = [str(c).strip().upper() for c in clubs_raw]
 
-        # Map club names to image URLs (Safely)
         images = []
         valid_clubs = []
         
