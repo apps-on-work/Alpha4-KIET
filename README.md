@@ -33,6 +33,15 @@ And, we plan to use:
 
 in future.
 
+### How to set up the Backend?
+
+After cloning the repo, you have to get your `GEMINI_API_KEY` in a `.env` file and save it in the `/` root directory.
+
+Download the dependencies.
+`pip install -r requirements.txt`
+Run the flask app
+`python app.py`
+
 # Future Plans
 1. Integration of NEXT.js for login to make it more secure and user-friendly
 2. Google Firebase for Backend database
