@@ -35,6 +35,7 @@ body {
   padding: 12px 24px;
   background-color: #000000;
   border-bottom: 1px solid #eeeeee;
+  z-index: 1000;
 }
 
 /* Logo area */
